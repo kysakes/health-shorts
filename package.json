@@ -1,0 +1,28 @@
+{
+  "name": "health-shorts",
+  "version": "1.0.0",
+  "description": "Animierte Gesundheits-Shorts (9:16) im Vergleichs-Format, komplett aus Code",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "vorschau": "remotion studio src/index.ts",
+    "sprechen": "node scripts/sprechen.mjs",
+    "render": "node scripts/render.mjs",
+    "pruefen": "tsc --noEmit"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "4.0.508",
+    "@remotion/google-fonts": "4.0.508",
+    "@remotion/install-whisper-cpp": "4.0.508",
+    "@remotion/layout-utils": "4.0.508",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "remotion": "4.0.508"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "typescript": "^5.9.3"
+  }
+}

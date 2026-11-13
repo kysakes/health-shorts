@@ -1,0 +1,17 @@
+node_modules/
+.env
+ausgabe/
+public/ton/*/.cache.json
+.remotion/
+*.log
+werkzeug/
+
+# Erzeugte / heruntergeladene Medien (per Script jederzeit neu erzeugbar)
+public/fotos/**/*.mp4
+public/fotos/**/*.jpg
+public/fotos/**/*.roh
+public/ton/
+public/musik/*.wav
+# Screenshots fremder Kanaele (Recherche) - nur die Auswertungen kommen ins Repo
+recherche-*/*.jpg
+recherche-*/*.png
