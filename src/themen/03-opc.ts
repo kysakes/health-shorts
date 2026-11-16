@@ -7,184 +7,176 @@ const GRUEN = '#3EE08F';
 const ROT = '#FF4D5E';
 
 /**
- * OPC / TRAUBENKERNEXTRAKT (13.11.2026), ruhiger Look, Ziel 80-100 s.
+ * TRAUBENKERNEXTRAKT / OPC - Fassung 3 (15.11.2026), positiver Ton, ruhiger Look.
+ * Nutzerwunsch: OPC positiv darstellen, "es gibt jede Menge Studien", Stil-Referenz
+ * Robert Franz (nur Vermittlung: direkte Ansprache, Bilder). Inhalte NUR belegt,
+ * keine Heilversprechen (HCVO / YouTube-Richtlinie), Formulierung "in Studien".
  *
  * Quellen:
- *  - Verbraucherzentrale (Klartext NEM): keine zugelassenen gesundheitsbezogenen Angaben
- *    fuer OPC; antioxidative Wirkung nur in Zell- und Tierversuchen; Extrakte nicht
- *    standardisiert. verbraucherzentrale.de/faq/lebensmittel/werbung-zu-opcpraeparaten-22598
- *  - EFSA NDA-Gutachten "cause and effect not established": Cholesterin (2009, OPC Premium),
- *    chronisch-venoese Insuffizienz (2010, OPC Plus), Dunkeladaptation (2011),
- *    Blutdruck (2021, MegaNatural-BP)
- *  - Zhang et al. 2016, Medicine 95:e4247: Meta-Analyse 16 RCTs, n=810,
- *    systolisch -6,08 mmHg (KI -10,7 bis -1,4)
- *  - Feringa et al. 2011, J Am Diet Assoc 111:1173: 9 Studien, n=390, systolisch -1,54 mmHg
- *  - Tao et al. 2019, Compr Rev Food Sci Food Saf 18:971: Proanthocyanidine kaum
- *    aufgenommen (nur Mono-/Di-/Trimere), Hauptwirkort vermutlich der Darm
- *  - NCCIH (NIH): moeglicherweise unsicher bei Blutungsstoerungen, vor Operationen,
- *    mit Gerinnungshemmern
- *  - Hammerstone et al. 2000, J Nutr 130:2086: Aepfel/Kakao reich an Procyanidinen,
- *    stark sortenabhaengig
- *  - Geschichte: Jacques Cartier, Winter 1535/36 am St.-Lorenz-Strom, Skorbut, Tee
- *    ("Annedda") der Irokesen; Masquelier isolierte ab den 1940ern OPC
+ *  - Zhang et al. 2016, Medicine 95:e4247: 16 RCTs, n=810, systolisch -6,1 mmHg,
+ *    diastolisch -2,8 mmHg; deutlicher bei Uebergewicht/metabolischem Syndrom
+ *  - He, Li, MacGregor 2013, BMJ 346:f1325: weniger Salz -> systolisch ~-5,4 mmHg
+ *  - Anjom-Shoae et al. 2020, Br J Nutr: 11 RCTs, LDL und Triglyceride gesenkt
+ *  - Asbaghi et al. 2020, Phytother Res 34:239: Nuechternglukose, LDL, CRP gesenkt
+ *  - Clifton 2004, J Biomed Biotechnol 2004:272: Gefaessfunktion (FMD) +1,1 % absolut
+ *  - Sano et al. 2013, J Sci Food Agric 93:457: weniger Beinschwellung nach 6 h Sitzen
+ *  - Yamakoshi et al. 2004, Phytother Res 18:895: Chloasma bei 10 von 12 Frauen gebessert
+ *  - Drugs.com / NCCIH: gut vertraeglich, Nebenwirkungen aehnlich haeufig wie Placebo;
+ *    Vorsicht Gerinnungshemmer/OP; Schwangerschaft: keine Daten
  */
 export const thema: Thema = {
   id: '03-opc',
-  titel: 'OPC: 20-mal stärker als Vitamin C? 🍇 #shorts',
-  quelleKurz: 'Quellen: EFSA · Verbraucherzentrale · Studien',
+  titel: 'OPC aus Traubenkernen: Das zeigen die Studien 🍇 #shorts',
+  quelleKurz: 'Quellen: Meta-Analysen · Studien · NIH',
   musik: { datei: 'lofi-1.wav', lautstaerke: 0.11 },
   ruhig: true,
-  // YouTube-Shorts-Fassung (~53 s): ohne Herkunft + Geschichte, Kern = Mythos -> Belege -> Zulassung
-  kurzfassung: [1, 7, 8, 9, 10, 11, 12, 14, 16],
+  // YouTube-Shorts-Fassung (~55 s)
+  kurzfassung: [1, 3, 4, 5, 6, 8, 11, 13],
   beschreibung:
-    'OPC aus Traubenkernen wird als Super-Antioxidans verkauft – angeblich 20-mal stärker als Vitamin C. ' +
-    'Woher die Zahl kommt, was Studien am Menschen zeigen und warum in der EU keine einzige Gesundheitsaussage zugelassen ist.\n\n' +
-    'Quellen: Verbraucherzentrale (Werbung zu OPC-Präparaten), EFSA-Gutachten 2009–2021, ' +
-    'Zhang et al. 2016 (Medicine), Feringa et al. 2011 (J Am Diet Assoc), Tao et al. 2019, NCCIH.\n' +
+    'OPC aus Traubenkernen gehört zu den am besten untersuchten Pflanzenstoffen. Was zeigen die Studien ' +
+    'bei Blutdruck, Cholesterin, Blutzucker, Entzündungswerten, Gefäßen, geschwollenen Beinen und Haut? ' +
+    'Und worauf solltest du achten?\n\n' +
+    'Quellen: Zhang et al. 2016 (Medicine), He et al. 2013 (BMJ), Anjom-Shoae et al. 2020 (Br J Nutr), ' +
+    'Asbaghi et al. 2020 (Phytother Res), Clifton 2004, Sano et al. 2013, Yamakoshi et al. 2004, NCCIH (NIH).\n' +
     'Videos: Pexels. Allgemeine Information, keine medizinische Beratung. ' +
     'Wer Medikamente nimmt, klärt Nahrungsergänzung mit Arzt oder Apotheke.\n\n' +
-    '#shorts #opc #nahrungsergänzung #gesundheit #mryfacts',
-  tags: ['opc', 'traubenkernextrakt', 'opc traubenkern', 'antioxidantien', 'nahrungsergänzungsmittel', 'blutdruck', 'gesundheit'],
+    '#shorts #opc #traubenkernextrakt #nahrungsergänzung #mryfacts',
+  tags: ['opc', 'traubenkernextrakt', 'opc wirkung', 'opc studien', 'opc traubenkern', 'blutdruck', 'nahrungsergänzungsmittel'],
   quellen: [
-    'https://www.verbraucherzentrale.de/faq/lebensmittel/werbung-zu-opcpraeparaten-22598',
     'https://pubmed.ncbi.nlm.nih.gov/27537554/',
+    'https://doi.org/10.1136/bmj.f1325',
+    'https://doi.org/10.1017/S0007114520000902',
+    'https://pubmed.ncbi.nlm.nih.gov/31880030/',
+    'https://pubmed.ncbi.nlm.nih.gov/15577189/',
+    'https://pubmed.ncbi.nlm.nih.gov/22752876/',
+    'https://doi.org/10.1002/ptr.1537',
     'https://www.nccih.nih.gov/health/grape-seed-extract',
-    'https://doi.org/10.1111/1541-4337.12444',
-    'https://pubmed.ncbi.nlm.nih.gov/10917927/',
   ],
 
   szenen: [
-    // HOOK
+    // 1 HOOK
     {
-      text: 'OPC soll *20-mal stärker* sein als Vitamin C. Aber stimmt das?',
+      text: 'OPC aus Traubenkernen gehört zu den am besten untersuchten *Pflanzenstoffen*. Was zeigen die Studien?',
       farbe: LILA,
       pause: 0.3,
-      fotos: [{ suche: 'red grapes vineyard close up', video: true }],
-      schlagzeile: { oben: '20-mal stärker', unten: 'als Vitamin C?' },
+      fotos: [
+        { suche: 'red grapes vineyard close up', video: true },
+        { suche: 'capsules supplement bottle', video: true, wort: 'Studien' },
+      ],
+      schlagzeile: { oben: 'OPC:', unten: 'Das zeigen Studien' },
     },
+    // 2 Was ist das
     {
-      text: 'OPC steht für oligomere *Proanthocyanidine*. Klingt kompliziert, sind aber Pflanzenstoffe.',
+      text: 'Die Traube schützt damit ihre Kerne, wie ein *Rostschutz*. Und genau diese Schutzstoffe wurden in Dutzenden Studien am Menschen getestet.',
       farbe: LILA,
       fotos: [
         { suche: 'grapes macro water drops', video: true },
-        { suche: 'green leaves sunlight', video: true, wort: 'Pflanzenstoffe' },
+        { suche: 'scientist laboratory research', video: true, wort: 'Studien' },
       ],
     },
+    // 3 Blutdruck
     {
-      text: 'Sie stecken in *Traubenkernen*, in Äpfeln mit Schale und in Kakao.',
-      farbe: LILA,
-      fotos: [
-        { suche: 'grapes cut in half', video: true },
-        { suche: 'red apple', video: true, wort: 'Äpfeln' },
-        { suche: 'cocoa beans', video: true, wort: 'Kakao' },
-      ],
-    },
-    // Geschichte
-    {
-      text: 'Die Geschichte beginnt *1535*. Seefahrer Jacques Cartier steckt im kanadischen Eis fest, seine Männer haben Skorbut.',
-      farbe: BLAU,
-      fotos: [
-        { suche: 'old sailing ship ocean', video: true },
-        { suche: 'frozen river winter', video: true, wort: 'Eis' },
-      ],
-    },
-    {
-      text: 'Einheimische kochen ihnen einen Tee aus Baumrinde, und sie werden gesund. Heute wissen wir: Das lag am *Vitamin C*.',
-      farbe: GELB,
-      fotos: [
-        { suche: 'pine tree bark close up', video: true },
-        { suche: 'steaming mug of tea hands', video: true, wort: 'gesund' },
-      ],
-    },
-    {
-      text: 'Rund *400 Jahre* später isoliert der Franzose Jacques Masquelier aus Kiefernrinde die Stoffe, die heute als OPC verkauft werden.',
-      farbe: BLAU,
-      fotos: [
-        { suche: 'old books library', video: true },
-        { suche: 'scientist microscope', video: true, wort: 'Kiefernrinde' },
-      ],
-    },
-    // Die 20-mal-Zahl
-    {
-      text: 'Und die *20-mal stärker*? Die Zahl stammt aus dem *Reagenzglas*.',
-      farbe: ROT,
-      pause: 0.4,
-      fotos: [{ suche: 'test tubes laboratory', video: true }],
-      schlagzeile: { oben: 'Nur im', unten: 'Reagenzglas', wort: 'Reagenzglas' },
-    },
-    {
-      text: 'Dort fängt OPC freie Radikale ab. Ob das im Körper genauso klappt, ist *nicht belegt*.',
-      farbe: ROT,
-      fotos: [
-        { suche: 'petri dish microscope', video: true },
-        { suche: 'woman thinking', video: true, wort: 'Körper' },
-      ],
-      studie: { titel: 'Verbraucherzentrale', zeile: 'Wirkung nur in Zell- und Tierversuchen', wort: 'Körper' },
-    },
-    // Aufnahme
-    {
-      text: 'Denn dein Körper nimmt OPC *kaum* auf. Der Großteil landet im Darm, wo Bakterien es zerlegen.',
-      farbe: GELB,
-      fotos: [
-        { suche: 'woman taking capsule', video: true },
-        { suche: 'bacteria microscope', video: true, wort: 'Darm' },
-      ],
-      studie: { titel: 'Tao et al. · 2019', zeile: 'Kaum Aufnahme, Wirkort wohl der Darm', wort: 'Großteil' },
-    },
-    // Studien am Menschen
-    {
-      text: 'Und am Menschen? Beim *Blutdruck* gibt es zumindest Hinweise.',
+      text: 'Am stärksten untersucht: der *Blutdruck*. Eine Auswertung von 16 Studien fand rund 6 Punkte weniger beim oberen Wert.',
       farbe: GRUEN,
-      fotos: [{ suche: 'blood pressure monitor arm', video: true }],
-    },
-    {
-      text: 'Eine Auswertung fand rund *6 Punkte* weniger beim oberen Wert, eine andere nur *anderthalb*.',
-      farbe: GRUEN,
-      fotos: [{ suche: 'doctor patient consultation', video: true }],
+      fotos: [
+        { suche: 'blood pressure monitor arm', video: true },
+        { suche: 'doctor patient consultation', video: true, wort: 'Auswertung' },
+      ],
       bild: {
         typ: 'balken',
-        max: 6.5,
+        max: 7,
         items: [
-          { label: '2016 · 16 STUDIEN', wert: 6.1, anzeige: '−6 mmHg', farbe: GRUEN, wort: '6' },
-          { label: '2011 · 9 STUDIEN', wert: 1.5, anzeige: '−1,5 mmHg', farbe: GELB, wort: 'anderthalb' },
+          { label: 'OBERER WERT', wert: 6.1, anzeige: '−6 mmHg', farbe: GRUEN, wort: '6' },
+          { label: 'UNTERER WERT', wert: 2.8, anzeige: '−3 mmHg', farbe: BLAU, wort: 'Wert' },
         ],
       },
     },
-    // Rechtslage
+    // 4 Vergleich
     {
-      text: 'Zu wenig für die EU. Dort ist *keine einzige* Gesundheitsaussage für OPC zugelassen.',
-      farbe: ROT,
-      pause: 0.5,
-      fotos: [{ suche: 'european union flag', video: true }],
-      schlagzeile: { oben: 'Zugelassene Aussagen:', unten: 'null', wort: 'keine' },
+      text: 'Zum Vergleich: Das ist etwa so viel, wie *weniger Salz* bei Bluthochdruck bringt. Am deutlichsten war der Effekt bei Übergewicht.',
+      farbe: GRUEN,
+      fotos: [
+        { suche: 'salt shaker food', video: true },
+        { suche: 'man measuring waist', video: true, wort: 'Übergewicht' },
+      ],
+      studie: { titel: 'Medicine · 2016 · 16 Studien', zeile: 'Oberer Wert: rund −6 mmHg', wort: 'Vergleich' },
     },
+    // 5 Cholesterin
     {
-      text: 'Die EFSA prüfte Venen, Cholesterin und Blutdruck. Jedes Mal: *nicht belegt*.',
-      farbe: ROT,
-      fotos: [{ suche: 'documents office desk', video: true }],
-      studie: { titel: 'EFSA · 2009 bis 2021', zeile: 'Venen, Cholesterin, Blutdruck: nicht belegt', wort: 'prüfte' },
-    },
-    // Sicherheit
-    {
-      text: 'Und Vorsicht: Wer Blutverdünner nimmt, bespricht OPC besser vorher mit dem *Arzt*.',
+      text: 'Auch beim *LDL*, dem schlechten Cholesterin, und bei den Blutfetten zeigen zwei große Auswertungen eine Senkung.',
       farbe: GELB,
+      fotos: [
+        { suche: 'blood sample tube laboratory', video: true },
+        { suche: 'healthy breakfast table', video: true, wort: 'Blutfetten' },
+      ],
+      studie: { titel: 'Br J Nutr · 2020 · 11 Studien', zeile: 'LDL und Blutfette gesenkt', wort: 'Auswertungen' },
+    },
+    // 6 Entzuendung + Zucker
+    {
+      text: 'Dazu sanken in Studien der Entzündungswert *CRP* und der Nüchternblutzucker.',
+      farbe: GELB,
+      fotos: [
+        { suche: 'blood glucose meter finger', video: true },
+        { suche: 'doctor reading results', video: true, wort: 'Nüchternblutzucker' },
+      ],
+      studie: { titel: 'Phytother Res · 2020', zeile: 'CRP und Blutzucker gesenkt', wort: 'CRP' },
+    },
+    // 7 Gefaesse
+    {
+      text: 'Und die Gefäße? In einer Studie mit Risikopatienten konnten sich die Blutgefäße nach OPC *besser weiten*.',
+      farbe: ROT,
+      fotos: [
+        { suche: 'heart blood vessels animation', video: true },
+        { suche: 'senior man walking park', video: true, wort: 'weiten' },
+      ],
+    },
+    // 8 Beine
+    {
+      text: 'Spannend für alle mit Bürojob: Bei Frauen schwollen die *Beine* nach sechs Stunden Sitzen deutlich weniger an.',
+      farbe: BLAU,
+      fotos: [
+        { suche: 'woman working office desk', video: true },
+        { suche: 'woman legs walking', video: true, wort: 'Beine' },
+      ],
+      studie: { titel: 'Sano et al. · 2013', zeile: 'Weniger Beinschwellung beim Sitzen', wort: 'Frauen' },
+    },
+    // 9 Haut
+    {
+      text: 'Sogar die Haut: Bei Pigmentflecken im Gesicht besserte sich das Hautbild bei *10 von 12* Frauen.',
+      farbe: LILA,
+      fotos: [{ suche: 'woman face skin mirror', video: true }],
+      bild: { typ: 'zaehler', von: 0, bis: 10, nach: ' von 12', farbe: LILA, unter: 'FRAUEN MIT BESSERUNG', wort: '10' },
+    },
+    // 10 Vertraeglichkeit
+    {
+      text: 'Und die Verträglichkeit? In Studien traten Nebenwirkungen etwa *so selten* auf wie beim Scheinmittel.',
+      farbe: GRUEN,
+      fotos: [{ suche: 'woman smiling morning kitchen', video: true }],
+    },
+    // 11 Vorsicht
+    {
+      text: 'Wichtig nur: Wer *Blutverdünner* nimmt oder eine Operation vor sich hat, spricht vorher mit dem Arzt.',
+      farbe: ROT,
       pause: 0.4,
       fotos: [
         { suche: 'pharmacist pharmacy counter', video: true },
         { suche: 'doctor talking with patient', video: true, wort: 'Arzt' },
       ],
+      studie: { titel: 'NCCIH · NIH', zeile: 'Blutverdünner: Blutungsrisiko', wort: 'Blutverdünner' },
     },
+    // 12 Schwangerschaft
     {
-      text: 'Übrigens: Auch ein *Apfel* mit Schale liefert OPC.',
-      farbe: GRUEN,
-      fotos: [{ suche: 'woman biting apple', video: true }],
+      text: 'Und für Schwangerschaft und Stillzeit fehlen noch *Daten*.',
+      farbe: ROT,
+      fotos: [{ suche: 'pregnant woman belly', video: true }],
     },
+    // 13 Schluss
     {
-      text: 'Am Ende bleibt: viel Reagenzglas, aber wenig *Beweise* am Menschen.',
+      text: 'OPC ist also kein Wundermittel. Aber ein Pflanzenstoff mit *messbaren* Effekten und vielen Studien dahinter.',
       farbe: LILA,
       pause: 0.9,
       fotos: [{ suche: 'grapes vineyard sunset', video: true }],
-      schlagzeile: { oben: 'Viel Reagenzglas.', unten: 'Wenig Beweis.', farbeUnten: LILA, wort: 'wenig' },
+      schlagzeile: { oben: 'Gut untersucht.', unten: 'Messbare Effekte.', farbeUnten: LILA, wort: 'messbaren' },
     },
   ],
 };

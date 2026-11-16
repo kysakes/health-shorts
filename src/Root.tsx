@@ -10,8 +10,13 @@ import { thema as t01tr } from './themen/01-vitamin-d-tr';
 import { thema as t01neu } from './themen/01-vitamin-d-neu';
 import { thema as t02 } from './themen/02-koffein';
 import { thema as t03 } from './themen/03-opc';
+import { thema as t04 } from './themen/04-bittersalz';
+import { thema as t05 } from './themen/05-vitamin-d';
+import { thema as t06 } from './themen/06-vitamin-c';
+import { thema as t07 } from './themen/07-zink';
+import { thema as t08 } from './themen/08-msm';
 
-const THEMEN: Thema[] = [t01, t01tr, t01neu, t02, t03];
+const THEMEN: Thema[] = [t01, t01tr, t01neu, t02, t03, t04, t05, t06, t07, t08];
 
 const jsonLaden = async <X,>(pfad: string): Promise<X | null> => {
   try {

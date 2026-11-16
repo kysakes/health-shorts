@@ -28,13 +28,25 @@ export const AUSSPRACHE = {
     ['blutverdünn', 'Blut-Verdünn'], // blˈʊt -> blˈuːt
     ['erdnusshäutchen', 'Erd-Nusshäutchen'], // Betonung auf Erd
     ['pflanzenstoff', 'Pflanzen-Stoff'], // st -> ʃt
+    // Allgemein: "...stoff" in Zusammensetzungen (Schutzstoffe, Mineralstoffe) -> ʃt
+    ['(?<=[a-zäöüß])stoff', '-Stoff'],
     ['cholesterin', 'Koleste-rien'], // Betonung hinten
     ['\\bKakao\\b', 'Ka-kau'], // kˈɑkaˌoː -> kˈɑːkˈaʊ
     ['\\bSkorbut\\b', 'Skor-buht'], // Whisper hoerte "Scoreboot"; Betonung hinten
     ['kiefernrinde', 'Kiefern-Rinde'], // Whisper hoerte "Siefern"
     ['blutdruck', 'Blut-Druck'], // blˈʊt -> blˈuːt
+    ['bluthochdruck', 'Blut-Hochdruck'], // blˈʊt -> blˈuːt
+    ['blutzucker', 'Blut-Zucker'], // blˈʊt -> blˈuːt
+    ['bürojob', 'Büro-Dschopp'], // jˌoːp -> dʒˈɔp
     ['\\bEU\\b', 'E-U'], // ˈɔø -> ˈeːˈuː
     ['\\bNadeln\\b', 'Naadeln'], // nˈɑdəln -> nˈɑːdəln
+    // 04-08 (15.11.2026)
+    ['\\bEpsom', 'Eppsemm'], // ɛpzˈoːm -> ˈɛpzɛm (englisch)
+    ['grapefruit', 'Grehpfruht-'], // englisch
+    ['\\bCochrane', 'Kock-rehn'], // englisch
+    ['hauttyp', 'Haut-Typ'], // hˈaʊtyːp -> Haut-Tüp
+    ['\\bVollkorn', 'Voll-Korn'], // Betonung vorn
+    ['intensivstation', 'Intensiv-Station'], // st -> ʃt
     // Nicht verwenden (Piper betont falsch): "Labor", "Fazit", "Bilanz", "Unterm Strich"
   ],
   tr: [],

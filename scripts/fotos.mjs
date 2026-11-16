@@ -42,6 +42,21 @@ let alt = {};
 if (!neu) alt = JSON.parse(await fs.readFile(liste, 'utf8').catch(() => '{}'));
 
 const benutzt = new Set(Object.values(alt).map((f) => f.pexelsId));
+
+// Netz bricht gelegentlich ab (ECONNRESET) -> bis zu 3 Versuche
+const holen = async (url, opt = {}) => {
+  for (let v = 1; ; v++) {
+    try {
+      const r = await fetch(url, { ...opt, signal: AbortSignal.timeout(120000) });
+      const daten = Buffer.from(await r.arrayBuffer());
+      return { r, daten };
+    } catch (e) {
+      if (v >= 3) throw e;
+      console.log(`  Verbindung abgebrochen, Versuch ${v + 1} ...`);
+      await new Promise((ok) => setTimeout(ok, 3000 * v));
+    }
+  }
+};
 const ergebnis = {};
 
 /**
@@ -80,9 +95,9 @@ for (const [i, s] of thema.szenen.entries()) {
     const url = foto.video
       ? `https://api.pexels.com/videos/search?query=${q}&orientation=portrait&size=medium&per_page=15`
       : `https://api.pexels.com/v1/search?query=${q}&orientation=portrait&per_page=15`;
-    const r = await fetch(url, { headers: { Authorization: KEY } });
+    const { r, daten: roh } = await holen(url, { headers: { Authorization: KEY } });
     if (!r.ok) throw new Error(`Pexels ${r.status} bei "${foto.suche}"`);
-    const antwort = await r.json();
+    const antwort = JSON.parse(roh.toString('utf8'));
     // Videos: nur Clips mit passender Hochkant-Datei (1080 breit) und mind. 5 s
     const passendeDatei = (v) =>
       (v.video_files ?? [])
@@ -101,8 +116,7 @@ for (const [i, s] of thema.szenen.entries()) {
     const bildUrl = foto.video ? passendeDatei(wahl).link : `${wahl.src.original}?auto=compress&cs=tinysrgb&w=1440`;
     if (foto.video) wahl.photographer = wahl.user?.name ?? 'Pexels';
     const datei = `s${String(i + 1).padStart(2, '0')}-${k + 1}-${wahl.id}.${foto.video ? 'mp4' : 'jpg'}`;
-    const b = await fetch(bildUrl, { signal: AbortSignal.timeout(120000) });
-    const daten = Buffer.from(await b.arrayBuffer());
+    const { r: b, daten } = await holen(bildUrl);
     if (!b.ok || daten.length < 10000) throw new Error(`Download fehlgeschlagen: ${bildUrl}`);
     if (foto.video) {
       await fs.writeFile(path.join(ziel, datei + '.roh'), daten);
@@ -120,6 +134,8 @@ for (const [i, s] of thema.szenen.entries()) {
       fotograf: wahl.photographer,
       link: wahl.url,
     };
+    // Liste nach jedem Clip sichern (Abbruch verliert nichts)
+    await fs.writeFile(liste, JSON.stringify({ ...alt, ...ergebnis }, null, 2));
     console.log(`  ${schluessel}  ${(daten.length / 1024).toFixed(0)} KB  "${foto.suche}"  (${wahl.photographer})`);
   }
 }
