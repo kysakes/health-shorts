@@ -72,7 +72,10 @@ export const Bild: React.FC<Props> = ({ bild, f, dauer, wann, akzent }) => {
     case 'zaehler': {
       const ab = wann(bild.wort) ?? sek(0.15);
       const p = interpolate(f, [ab, ab + sek(1.3)], [0, 1], { ...CLAMP, easing: Easing.out(Easing.cubic) });
-      const wert = Math.round(bild.von + (bild.bis - bild.von) * p);
+      const wert = Math.round(bild.von + (bild.bis - bild.von) * p).toLocaleString('de-DE');
+      // Lange Endwerte ("28.000 km/h") verkleinern, damit sie in 1080 px passen
+      const laenge = bild.bis.toLocaleString('de-DE').length + 0.55 * (bild.nach ?? '').length;
+      const groesse = Math.min(1, 7 / laenge);
       const fertig = pop(f, ab + sek(1.3));
       const s = pop(f, 0);
       return (
@@ -87,7 +90,7 @@ export const Bild: React.FC<Props> = ({ bild, f, dauer, wann, akzent }) => {
               style={{
                 fontFamily: T.font,
                 fontWeight: 900,
-                fontSize: 250,
+                fontSize: Math.round(250 * groesse),
                 lineHeight: 1,
                 color: bild.farbe,
                 textShadow: `0 0 70px ${bild.farbe}77`,
@@ -96,7 +99,7 @@ export const Bild: React.FC<Props> = ({ bild, f, dauer, wann, akzent }) => {
               }}
             >
               {wert}
-              <span style={{ fontSize: 130 }}>{bild.nach ?? ''}</span>
+              <span style={{ fontSize: Math.round(130 * groesse) }}>{bild.nach ?? ''}</span>
             </div>
           </Abs>
           {bild.unter && (

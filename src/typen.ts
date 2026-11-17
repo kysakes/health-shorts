@@ -84,7 +84,14 @@ export type Szene = {
   /** Extra-Pause nach dem Satz (Sekunden) */
   pause?: number;
   /** Hintergrundfotos (Pexels, englische Suchbegriffe). Mehrere = Wechsel beim Wort `wort` */
-  fotos?: { suche: string; wort?: string; /** true = Pexels-Videoclip statt Foto */ video?: boolean }[];
+  fotos?: {
+    suche: string;
+    wort?: string;
+    /** true = Pexels-Videoclip statt Foto */
+    video?: boolean;
+    /** Fester Pexels-Clip (ID aus der Vorschau), statt erster Suchtreffer */
+    pexelsId?: number;
+  }[];
   /** Studien-Karte: Quelle sichtbar im Bild, faehrt beim Wort `wort` ein */
   studie?: { titel: string; zeile?: string; wort?: string };
 };

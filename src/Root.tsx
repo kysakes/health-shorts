@@ -15,8 +15,9 @@ import { thema as t05 } from './themen/05-vitamin-d';
 import { thema as t06 } from './themen/06-vitamin-c';
 import { thema as t07 } from './themen/07-zink';
 import { thema as t08 } from './themen/08-msm';
+import { thema as t09 } from './themen/09-weltraumschrott';
 
-const THEMEN: Thema[] = [t01, t01tr, t01neu, t02, t03, t04, t05, t06, t07, t08];
+const THEMEN: Thema[] = [t01, t01tr, t01neu, t02, t03, t04, t05, t06, t07, t08, t09];
 
 const jsonLaden = async <X,>(pfad: string): Promise<X | null> => {
   try {

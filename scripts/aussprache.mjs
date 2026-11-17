@@ -47,6 +47,13 @@ export const AUSSPRACHE = {
     ['hauttyp', 'Haut-Typ'], // hˈaʊtyːp -> Haut-Tüp
     ['\\bVollkorn', 'Voll-Korn'], // Betonung vorn
     ['intensivstation', 'Intensiv-Station'], // st -> ʃt
+    // 09-weltraumschrott (17.11.2026)
+    ['\\bISS\\b', 'I-S-S'], // ˈɪs -> ˈiːˈɛsˈɛs
+    ['\\bPoint Nemo\\b', 'Peunt Nemo'], // pˈoːɪnt -> pˈɔønt (englisch)
+    ['\\bOrbit\\b', 'Orr-bitt'], // ɔɾbˈɪt -> ˈɔɾbˈɪt (Betonung vorn)
+    ['rakete', 'Ra-keete'], // rˈɑkətə -> rˈɑːkˈeːtə (Betonung auf "kee")
+    ['\\bozon', 'O-zohn'], // ˈoːtsɔn -> ˈoːtsˈoːn (Betonung auf "zohn")
+    // "Starlink" bleibt ʃtˈaɾlɪŋk - keine Schreibweise ergibt "st"
     // Nicht verwenden (Piper betont falsch): "Labor", "Fazit", "Bilanz", "Unterm Strich"
   ],
   tr: [],

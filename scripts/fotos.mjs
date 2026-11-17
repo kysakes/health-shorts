@@ -87,17 +87,27 @@ for (const f of Object.values(alt)) {
 for (const [i, s] of thema.szenen.entries()) {
   for (const [k, foto] of (s.fotos ?? []).entries()) {
     const schluessel = `${i}-${k}`;
-    if (alt[schluessel]?.suche === foto.suche && !!alt[schluessel]?.video === !!foto.video) {
+    const gleich =
+      alt[schluessel]?.suche === foto.suche &&
+      !!alt[schluessel]?.video === !!foto.video &&
+      (!foto.pexelsId || alt[schluessel]?.pexelsId === foto.pexelsId);
+    if (gleich) {
       ergebnis[schluessel] = alt[schluessel];
       continue;
     }
     const q = encodeURIComponent(foto.suche);
-    const url = foto.video
-      ? `https://api.pexels.com/videos/search?query=${q}&orientation=portrait&size=medium&per_page=15`
-      : `https://api.pexels.com/v1/search?query=${q}&orientation=portrait&per_page=15`;
+    // pexelsId = gezielt ausgewaehlter Clip/Foto statt erster Suchtreffer
+    const url = foto.pexelsId
+      ? foto.video
+        ? `https://api.pexels.com/videos/videos/${foto.pexelsId}`
+        : `https://api.pexels.com/v1/photos/${foto.pexelsId}`
+      : foto.video
+        ? `https://api.pexels.com/videos/search?query=${q}&orientation=portrait&size=medium&per_page=15`
+        : `https://api.pexels.com/v1/search?query=${q}&orientation=portrait&per_page=15`;
     const { r, daten: roh } = await holen(url, { headers: { Authorization: KEY } });
     if (!r.ok) throw new Error(`Pexels ${r.status} bei "${foto.suche}"`);
-    const antwort = JSON.parse(roh.toString('utf8'));
+    const geladen = JSON.parse(roh.toString('utf8'));
+    const antwort = foto.pexelsId ? (foto.video ? { videos: [geladen] } : { photos: [geladen] }) : geladen;
     // Videos: nur Clips mit passender Hochkant-Datei (1080 breit) und mind. 5 s
     const passendeDatei = (v) =>
       (v.video_files ?? [])
